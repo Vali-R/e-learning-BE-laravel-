@@ -12,23 +12,33 @@ class FollowSeeder extends Seeder
      *
      * @return void
      */
-    public function FollowSeed($id, $follower_id, $following_id, $flag)
-    {
-        Follow::upsert([
-            'id' => $id,
-            'follower_id' => $follower_id,
-            'following_id' => $following_id,
-            'flag' => $flag,
-        ], ['follower_id'], ['following_id', 'flag']);
-    }
-
     public function run()
     {
-        Follow::query()->delete();
-
-        $this->FollowSeed(1, 2, 3, true);
-        $this->FollowSeed(2, 1, 2, true);
-        $this->FollowSeed(3, 1, 4, true);
-        $this->FollowSeed(4, 1, 5, true);
+        Follow::upsert([
+            [
+                'id' => 1,
+                'follower_id' => 2,
+                'following_id' => 3,
+                'flag' => true,
+            ],
+            [
+                'id' => 2,
+                'follower_id' => 1,
+                'following_id' => 2,
+                'flag' => true,
+            ],
+            [
+                'id' => 3,
+                'follower_id' => 1,
+                'following_id' => 4,
+                'flag' => true,
+            ],
+            [
+                'id' => 4,
+                'follower_id' => 1,
+                'following_id' => 5,
+                'flag' => true,
+            ],
+        ], ['follower_id'], ['following_id', 'flag']);
     }
 }

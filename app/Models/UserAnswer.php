@@ -11,8 +11,8 @@ class UserAnswer extends Model
 
     // Scopes
 
-    public function scopeIsCorrect($query, $value)
+    public function scopeCorrect($query)
     {
-        return $query->where('correct', $value);
+        return $query->where('correct', true);
     }
 }

@@ -12,23 +12,41 @@ class UserAnswerSeeder extends Seeder
      *
      * @return void
      */
-    public function UserAnswerSeed($id, $user_id, $question_id, $user_answer, $quiz_id, $correct)
-    {
-        UserAnswer::upsert([
-            'id' => $id,
-            'user_id' => $user_id,
-            'question_id' => $question_id,
-            'user_answer' => $user_answer,
-            'quiz_id' => $quiz_id,
-            'correct' => $correct,
-        ], ['user_id', 'quiz_id', 'question_id'], ['user_answer', 'correct']);
-    }
-
     public function run()
     {
-        $this->UserAnswerSeed(1, 1, 1, 'Yes', 1, true);
-        $this->UserAnswerSeed(2, 1, 2, 'Please', 1, false);
-        $this->UserAnswerSeed(3, 1, 3, 'Please', 1, true);
-        $this->UserAnswerSeed(4, 1, 4, 'Thank you', 1, true);
+        UserAnswer::upsert([
+            [
+                'id' => 1,
+                'user_id' => 1,
+                'question_id' => 1,
+                'user_answer' => 'Yes',
+                'quiz_id' => 1,
+                'correct' => true,
+            ],
+            [
+                'id' => 2,
+                'user_id' => 1,
+                'question_id' => 2,
+                'user_answer' => 'Please',
+                'quiz_id' => 1,
+                'correct' => false,
+            ],
+            [
+                'id' => 3,
+                'user_id' => 1,
+                'question_id' => 3,
+                'user_answer' => 'Please',
+                'quiz_id' => 1,
+                'correct' => true,
+            ],
+            [
+                'id' => 4,
+                'user_id' => 1,
+                'question_id' => 4,
+                'user_answer' => 'Thank you',
+                'quiz_id' => 1,
+                'correct' => true,
+            ],
+        ], ['user_id', 'quiz_id', 'question_id'], ['user_answer', 'correct']);
     }
 }

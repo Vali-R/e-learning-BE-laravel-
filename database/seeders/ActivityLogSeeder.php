@@ -14,21 +14,33 @@ class ActivityLogSeeder extends Seeder
      *
      * @return void
      */
-    public function ActivityLogSeed($id, $relatable_id, $relatable_type, $user_id)
-    {
-        ActivityLog::upsert([
-            'id' => $id,
-            'relatable_id' => $relatable_id,
-            'relatable_type' => $relatable_type,
-            'user_id' => $user_id,
-        ], ['user_id'], ['relatable_id', 'relatable_type']);
-    }
-
     public function run()
     {
-        $this->ActivityLogSeed(1, 1, Quiz::class, 1);
-        $this->ActivityLogSeed(5, 3, Follow::class, 1);
-        $this->ActivityLogSeed(7, 2, Follow::class, 1);
-        $this->ActivityLogSeed(8, 4, Follow::class, 1);
+        ActivityLog::upsert([
+            [
+                'id' => 1,
+                'relatable_id' => 1,
+                'relatable_type' => Quiz::class,
+                'user_id' => 1,
+            ],
+            [
+                'id' => 5,
+                'relatable_id' => 3,
+                'relatable_type' => Follow::class,
+                'user_id' => 1,
+            ],
+            [
+                'id' => 7,
+                'relatable_id' => 2,
+                'relatable_type' => Follow::class,
+                'user_id' => 1,
+            ],
+            [
+                'id' => 8,
+                'relatable_id' => 4,
+                'relatable_type' => Follow::class,
+                'user_id' => 1,
+            ],
+        ], ['user_id'], ['relatable_id', 'relatable_type']);
     }
 }
