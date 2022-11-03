@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\ActivityLogController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\UserLessonController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware'=>'auth:sanctum'], function () {
+Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/learnings-count/{user}', [UserLessonController::class, 'get_learnings_count']);
     Route::get('/activity-log/{user}', [ActivityLogController::class, 'get_activity_log']);
+    Route::get('/user-info/{user}', [UserController::class, 'show']);
 });
