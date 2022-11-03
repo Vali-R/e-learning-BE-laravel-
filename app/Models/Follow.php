@@ -15,4 +15,14 @@ class Follow extends Model
     {
         return $this->morphOne(ActivityLog::class, 'relatable');
     }
+
+    public function follower()
+    {
+        return $this->belongsTo(User::class, 'follower_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsTo(User::class, 'following_id');
+    }
 }

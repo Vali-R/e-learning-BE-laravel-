@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class UserAnswer extends Model
 {
     use HasFactory;
+
+    // Scopes
+
+    public function scopeCorrect($query)
+    {
+        return $query->where('correct', true);
+    }
 }

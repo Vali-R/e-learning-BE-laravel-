@@ -49,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function setPasswordAttribute($password)
     {
-        $this->attributes['password']=bcrypt($password);
+        $this->attributes['password'] = bcrypt($password);
     }
 
     public function activity_logs()
@@ -59,12 +59,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function followers()
     {
-        return $this->hasMany(Follow::class, "follower_id");
+        return $this->hasMany(Follow::class, 'follower_id');
     }
 
     public function followings()
     {
-        return $this->hasMany(Follow::class, "following_id");
+        return $this->hasMany(Follow::class, 'following_id');
     }
 
     public function user_lessons()
