@@ -4,7 +4,6 @@ namespace App\Http\Resources;
 
 use App\Models\Follow;
 use App\Models\Quiz;
-use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +18,7 @@ class ActivityLogResource extends JsonResource
      */
     public function toArray($request)
     {
-        $subject = Auth::id() === $this->user_id ? 'You' : User::find($this->user_id)->first_name;
+        $subject = Auth::id() === $this->user_id ? 'You' : $this->user->first_name;
 
         switch ($this->relatable_type) {
             case Quiz::class:

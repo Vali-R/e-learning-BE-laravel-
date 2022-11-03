@@ -10,7 +10,7 @@ class ActivityLogController extends Controller
 {
     public function get_activity_log(User $user)
     {
-        $activity_log = ActivityLogResource::collection($user->activity_logs()->with('relatable')->get());
+        $activity_log = ActivityLogResource::collection($user->activity_logs()->with('relatable', 'user')->get());
 
         return response()->json(['activity_log' => [$activity_log]]);
     }
