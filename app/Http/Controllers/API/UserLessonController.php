@@ -7,7 +7,7 @@ use App\Models\User;
 
 class UserLessonController extends Controller
 {
-    public function get_learnings_count(User $user)
+    public function getLearningsCount(User $user)
     {
         $learned_lessons_count = $user->user_lessons()->get()->count();
         $learned_words_count = $user->user_answers()->correct()->get()->count();
