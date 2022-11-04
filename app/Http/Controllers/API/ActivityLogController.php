@@ -8,7 +8,7 @@ use App\Models\User;
 
 class ActivityLogController extends Controller
 {
-    public function get_activity_log(User $user)
+    public function getActivityLog(User $user)
     {
         $activity_log = ActivityLogResource::collection($user->activity_logs()->with('relatable', 'user')->get());
 

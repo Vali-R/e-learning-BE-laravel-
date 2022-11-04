@@ -22,24 +22,28 @@ class ActivityLogSeeder extends Seeder
                 'relatable_id' => 1,
                 'relatable_type' => Quiz::class,
                 'user_id' => 1,
+                'title' => 'quiz',
             ],
             [
                 'id' => 5,
                 'relatable_id' => 3,
                 'relatable_type' => Follow::class,
                 'user_id' => 1,
+                'title' => 'follow',
             ],
             [
                 'id' => 7,
                 'relatable_id' => 2,
                 'relatable_type' => Follow::class,
                 'user_id' => 1,
+                'title' => 'follow',
             ],
             [
                 'id' => 8,
                 'relatable_id' => 4,
                 'relatable_type' => Follow::class,
                 'user_id' => 1,
+                'title' => 'follow',
             ],
         ], ['user_id'], ['relatable_id', 'relatable_type']);
     }

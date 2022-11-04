@@ -12,11 +12,8 @@ return new class() extends Migration {
      */
     public function up()
     {
-        Schema::create('unfollows', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('unfollower_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('unfollowing_id')->constrained('users')->cascadeOnDelete();
-            $table->timestamps();
+        Schema::table('activity_logs', function (Blueprint $table) {
+            $table->string('title');
         });
     }
 
@@ -27,6 +24,8 @@ return new class() extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('unfollows');
+        Schema::table('activity_logs', function (Blueprint $table) {
+            $table->dropColumn('title');
+        });
     }
 };
