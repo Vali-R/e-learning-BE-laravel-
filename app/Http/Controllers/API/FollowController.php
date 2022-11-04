@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Follow;
 use App\Models\User;
-use App\Services\ActivityLogService;
 
 class FollowController extends Controller
 {
@@ -20,7 +19,7 @@ class FollowController extends Controller
             ['flag' => !$existing_flag ?? true],
         );
 
-        $existing_flag ? ActivityLogService::createActivity($follow, 'unfollow') : ActivityLogService::createActivity($follow, 'follow');
+        $follow->activity()->create(['user_id' => $logged_user_id, 'title' => $existing_flag ? 'unfollow' : 'follow']);
 
         return response()->json(['message' => "Succesfully $operation"]);
     }

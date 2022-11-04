@@ -13,7 +13,7 @@ return new class() extends Migration {
     public function up()
     {
         Schema::table('activity_logs', function (Blueprint $table) {
-            $table->string('title');
+            $table->string('title')->nullable();
         });
     }
 
