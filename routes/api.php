@@ -22,4 +22,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/activity-log/{user}', [ActivityLogController::class, 'getActivityLog']);
     Route::get('/user-info/{user}', [UserController::class, 'show']);
     Route::post('/follow/{user}', [FollowController::class, 'toggleFollow']);
+    Route::get('/users', [UserController::class, 'index']);
 });

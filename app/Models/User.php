@@ -52,6 +52,14 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->attributes['password'] = bcrypt($password);
     }
 
+    // Scopes
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('first_name', 'LIKE', '%'.$search.'%');
+    }
+
+    // Relationships
+
     public function activity_logs()
     {
         return $this->hasMany(ActivityLog::class, 'user_id');

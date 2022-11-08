@@ -10,20 +10,21 @@ class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_users_can_authenticate_using_the_login_screen()
+    public function testUsersCanAuthenticateUsingTheLoginScreen()
     {
         $user = User::factory()->create();
 
         $response = $this->post('/login', [
             'email' => $user->email,
-            'password' => 'password',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
         ]);
 
         $this->assertAuthenticated();
-        $response->assertNoContent();
+        $response->assertStatus(200)
+            ->assertJsonStructure(['message', 'token']);
     }
 
-    public function test_users_can_not_authenticate_with_invalid_password()
+    public function testUsersCanNotAuthenticateWithInvalidPassword()
     {
         $user = User::factory()->create();
 
